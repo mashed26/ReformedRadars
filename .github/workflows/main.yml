@@ -11,6 +11,7 @@ on:
 jobs:
     build:
       runs-on: ubuntu-latest
+      name: Build and Release Jar
 
       permissions:
         contents: read
@@ -27,11 +28,6 @@ jobs:
             java-version: '21'
             cache: 'gradle'
 
-        - name: Clean up previous builds
-          run: |
-            rm -rf ~/.gradle/caches
-            ./gradlew clean
-
         - name: Build Jar with Gradle
           run: ./gradlew jar
 
@@ -45,3 +41,9 @@ jobs:
             tag: 'v${{ github.run_number }}'
             name: 'Release v${{ github.run_number }}'
             body: 'Automated release created by GitHub Actions.'
+
+        - name: Clean up
+          run: |
+            rm -rf ~/.gradle/caches
+            ./gradlew clean
+

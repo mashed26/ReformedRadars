@@ -33,7 +33,10 @@ jobs:
           run: chmod +x ./gradlew
 
         - name: Build Jar with Gradle
-          run: ./gradlew jar
+          run: ./gradlew jar --no-sources
+
+        - name: Delete Jar Sources
+          run: rm -f build/libs/*-sources.jar
 
         - name: Create Release Jar Artifact
           id: create_release

@@ -29,6 +29,9 @@ jobs:
             java-version: '21'
             cache: 'gradle'
 
+        - name: Grant execute permission for Gradle wrapper
+          run: chmod +x ./gradlew
+
         - name: Build Jar with Gradle
           run: ./gradlew jar
 

@@ -1,0 +1,13 @@
+{
+  "type": "crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:mechanical_bearing"
+    }
+  ],
+  "result": {
+    "item": "create_radar:radar_bearing",
+    "count": 1
+  }
+}

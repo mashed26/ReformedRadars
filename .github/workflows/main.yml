@@ -1,0 +1,47 @@
+name: Create Release Jar
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      permissions:
+        contents: read
+        packages: write
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up JDK 21
+          uses: actions/setup-java@v3
+          with:
+            distribution: 'temurin'
+            java-version: '21'
+            cache: 'gradle'
+
+        - name: Clean up previous builds
+          run: |
+            rm -rf ~/.gradle/caches
+            ./gradlew clean
+
+        - name: Build Jar with Gradle
+          run: ./gradlew jar
+
+        - name: Create Release Jar Artifact
+          id: create_release
+          uses: ncipollo/release-action@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            artifacts: build/libs/*.jar
+            tag: 'v${{ github.run_number }}'
+            name: 'Release v${{ github.run_number }}'
+            body: 'Automated release created by GitHub Actions.'

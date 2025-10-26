@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "reformedradars",
+  "version": "1.0.0",
+  "name": "Reformed Radars",
+  "description": "Modifies recipes",
+  "authors": ["mashed26"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/reformed_radars/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.mashed26.reformedradars.ReformedRadars"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "fabric": "*",
+    "minecraft": "1.20.1",
+    "java": ">=17"
+  }
+}

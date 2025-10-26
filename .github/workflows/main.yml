@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
     build:
@@ -14,8 +15,8 @@ jobs:
       name: Build and Release Jar
 
       permissions:
-        contents: read
         packages: write
+        contents: write
 
       steps:
         - name: Checkout code
